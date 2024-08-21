@@ -164,6 +164,11 @@ export default () => ({
       default: defaultPropFactory('autoHide'),
     },
 
+    hideParents: {
+       type: [Boolean],
+       default: defaultPropFactory('hideParents'),
+     },
+
     handleResize: {
       type: Boolean,
       default: defaultPropFactory('handleResize'),
@@ -1066,6 +1071,9 @@ function handleGlobalClose (event, touch = false) {
 
   for (let i = shownPoppers.length - 1; i >= 0; i--) {
     const popper = shownPoppers[i]
+
+    if (!popper.hideParents) return
+
     try {
       const contains = popper.$_containsGlobalTarget = isContainingEventTarget(popper, event)
       popper.$_pendingHide = false

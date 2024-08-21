@@ -31,6 +31,8 @@ export const config: FloatingVueConfig = {
   arrowPadding: 0,
   // Compute arrow overflow (useful to hide it)
   arrowOverflow: true,
+  // By default, hide parents on close
+  hideParents: true,
   // Themes
   themes: {
     tooltip: {
@@ -63,6 +65,8 @@ export const config: FloatingVueConfig = {
       handleResize: true,
       // Hide on clock outside
       autoHide: true,
+      // By default, hide parents on close
+      hideParents: true,
     },
     menu: {
       $extend: 'dropdown',

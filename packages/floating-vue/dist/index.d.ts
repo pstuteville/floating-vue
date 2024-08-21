@@ -117,6 +117,10 @@ export declare const Popper: () => {
             type: (FunctionConstructor | BooleanConstructor)[];
             default: (this: any) => any;
         };
+        hideParents: {
+            type: BooleanConstructor[];
+            default: (this: any) => any;
+        };
         handleResize: {
             type: BooleanConstructor;
             default: (this: any) => any;

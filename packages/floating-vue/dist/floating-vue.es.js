@@ -27,6 +27,7 @@ const config = {
   overflowPadding: 0,
   arrowPadding: 0,
   arrowOverflow: true,
+  hideParents: true,
   themes: {
     tooltip: {
       placement: "top",
@@ -45,7 +46,8 @@ const config = {
       triggers: ["click"],
       delay: 0,
       handleResize: true,
-      autoHide: true
+      autoHide: true,
+      hideParents: true
     },
     menu: {
       $extend: "dropdown",
@@ -265,6 +267,10 @@ var PrivatePopper = () => ({
     autoHide: {
       type: [Boolean, Function],
       default: defaultPropFactory("autoHide")
+    },
+    hideParents: {
+      type: [Boolean],
+      default: defaultPropFactory("hideParents")
     },
     handleResize: {
       type: Boolean,
@@ -1005,6 +1011,8 @@ function handleGlobalClose(event, touch = false) {
   const preventClose = {};
   for (let i = shownPoppers.length - 1; i >= 0; i--) {
     const popper = shownPoppers[i];
+    if (!popper.hideParents)
+      return;
     try {
       const contains = popper.$_containsGlobalTarget = isContainingEventTarget(popper, event);
       popper.$_pendingHide = false;
