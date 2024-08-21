@@ -1,3 +1,34 @@
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 import { offset, autoPlacement, shift, flip, arrow, size, computePosition, getScrollParents } from "@floating-ui/dom";
 import Vue from "vue";
 function assign(to, from) {
@@ -396,10 +427,9 @@ var PrivatePopper = () => ({
         hide: this.hide,
         handleResize: this.handleResize,
         onResize: this.onResize,
-        classes: {
-          ...this.classes,
+        classes: __spreadProps(__spreadValues({}, this.classes), {
           popperClass: this.popperClass
-        },
+        }),
         result: this.positioningDisabled ? null : this.result
       };
     },
@@ -412,7 +442,7 @@ var PrivatePopper = () => ({
       return ((_a = this.popperTriggers) == null ? void 0 : _a.includes("hover")) || ((_b = this.popperShowTriggers) == null ? void 0 : _b.includes("hover"));
     }
   },
-  watch: {
+  watch: __spreadValues(__spreadValues({
     shown: "$_autoShowHide",
     disabled(value) {
       if (value) {
@@ -426,31 +456,29 @@ var PrivatePopper = () => ({
         this.$_ensureTeleport();
         await this.$_computePosition();
       }
-    },
-    ...[
-      "triggers",
-      "positioningDisabled"
-    ].reduce((acc, prop) => {
-      acc[prop] = "$_refreshListeners";
-      return acc;
-    }, {}),
-    ...[
-      "placement",
-      "distance",
-      "skidding",
-      "boundary",
-      "strategy",
-      "overflowPadding",
-      "arrowPadding",
-      "preventOverflow",
-      "shift",
-      "shiftCrossAxis",
-      "flip"
-    ].reduce((acc, prop) => {
-      acc[prop] = "$_computePosition";
-      return acc;
-    }, {})
-  },
+    }
+  }, [
+    "triggers",
+    "positioningDisabled"
+  ].reduce((acc, prop) => {
+    acc[prop] = "$_refreshListeners";
+    return acc;
+  }, {})), [
+    "placement",
+    "distance",
+    "skidding",
+    "boundary",
+    "strategy",
+    "overflowPadding",
+    "arrowPadding",
+    "preventOverflow",
+    "shift",
+    "shiftCrossAxis",
+    "flip"
+  ].reduce((acc, prop) => {
+    acc[prop] = "$_computePosition";
+    return acc;
+  }, {})),
   created() {
     this.$_isDisposed = true;
     this.randomId = `popper_${[Math.random(), Date.now()].map((n) => n.toString(36).substring(2, 10)).join("_")}`;
@@ -669,10 +697,7 @@ var PrivatePopper = () => ({
         y: data.y,
         placement: data.placement,
         strategy: data.strategy,
-        arrow: {
-          ...data.middlewareData.arrow,
-          ...data.middlewareData.arrowOverflow
-        }
+        arrow: __spreadValues(__spreadValues({}, data.middlewareData.arrow), data.middlewareData.arrowOverflow)
       });
     },
     $_scheduleShow(event = null, skipDelay = false) {
@@ -1385,10 +1410,7 @@ function normalizeComponent(scriptExports, render2, staticRenderFns2, functional
     options2._ssrRegister = hook;
   } else if (injectStyles) {
     hook = shadowMode ? function() {
-      injectStyles.call(
-        this,
-        (options2.functional ? this.parent : this).$root.$options.shadowRoot
-      );
+      injectStyles.call(this, (options2.functional ? this.parent : this).$root.$options.shadowRoot);
     } : injectStyles;
   }
   if (hook) {
@@ -1410,16 +1432,7 @@ function normalizeComponent(scriptExports, render2, staticRenderFns2, functional
   };
 }
 const __cssModules$5 = {};
-var __component__$5 = /* @__PURE__ */ normalizeComponent(
-  __vue2_script$5,
-  render$2,
-  staticRenderFns$2,
-  false,
-  __vue2_injectStyles$5,
-  null,
-  null,
-  null
-);
+var __component__$5 = /* @__PURE__ */ normalizeComponent(__vue2_script$5, render$2, staticRenderFns$2, false, __vue2_injectStyles$5, null, null, null);
 function __vue2_injectStyles$5(context) {
   for (let o in __cssModules$5) {
     this[o] = __cssModules$5[o];
@@ -1499,16 +1512,7 @@ var render$1 = function() {
 };
 var staticRenderFns$1 = [];
 const __cssModules$4 = {};
-var __component__$4 = /* @__PURE__ */ normalizeComponent(
-  __vue2_script$4,
-  render$1,
-  staticRenderFns$1,
-  false,
-  __vue2_injectStyles$4,
-  null,
-  null,
-  null
-);
+var __component__$4 = /* @__PURE__ */ normalizeComponent(__vue2_script$4, render$1, staticRenderFns$1, false, __vue2_injectStyles$4, null, null, null);
 function __vue2_injectStyles$4(context) {
   for (let o in __cssModules$4) {
     this[o] = __cssModules$4[o];
@@ -1517,24 +1521,14 @@ function __vue2_injectStyles$4(context) {
 var PrivatePopperWrapper = /* @__PURE__ */ function() {
   return __component__$4.exports;
 }();
-var __vue2_script$3 = {
-  ...PrivatePopperWrapper,
+var __vue2_script$3 = __spreadProps(__spreadValues({}, PrivatePopperWrapper), {
   name: "VDropdown",
   vPopperTheme: "dropdown"
-};
+});
 var Dropdown_vue_vue_type_style_index_0_lang = "";
 let __vue2_render$2, __vue2_staticRenderFns$2;
 const __cssModules$3 = {};
-var __component__$3 = /* @__PURE__ */ normalizeComponent(
-  __vue2_script$3,
-  __vue2_render$2,
-  __vue2_staticRenderFns$2,
-  false,
-  __vue2_injectStyles$3,
-  null,
-  null,
-  null
-);
+var __component__$3 = /* @__PURE__ */ normalizeComponent(__vue2_script$3, __vue2_render$2, __vue2_staticRenderFns$2, false, __vue2_injectStyles$3, null, null, null);
 function __vue2_injectStyles$3(context) {
   for (let o in __cssModules$3) {
     this[o] = __cssModules$3[o];
@@ -1543,23 +1537,13 @@ function __vue2_injectStyles$3(context) {
 var PrivateDropdown = /* @__PURE__ */ function() {
   return __component__$3.exports;
 }();
-var __vue2_script$2 = {
-  ...PrivatePopperWrapper,
+var __vue2_script$2 = __spreadProps(__spreadValues({}, PrivatePopperWrapper), {
   name: "VMenu",
   vPopperTheme: "menu"
-};
+});
 let __vue2_render$1, __vue2_staticRenderFns$1;
 const __cssModules$2 = {};
-var __component__$2 = /* @__PURE__ */ normalizeComponent(
-  __vue2_script$2,
-  __vue2_render$1,
-  __vue2_staticRenderFns$1,
-  false,
-  __vue2_injectStyles$2,
-  null,
-  null,
-  null
-);
+var __component__$2 = /* @__PURE__ */ normalizeComponent(__vue2_script$2, __vue2_render$1, __vue2_staticRenderFns$1, false, __vue2_injectStyles$2, null, null, null);
 function __vue2_injectStyles$2(context) {
   for (let o in __cssModules$2) {
     this[o] = __cssModules$2[o];
@@ -1568,24 +1552,14 @@ function __vue2_injectStyles$2(context) {
 var PrivateMenu = /* @__PURE__ */ function() {
   return __component__$2.exports;
 }();
-var __vue2_script$1 = {
-  ...PrivatePopperWrapper,
+var __vue2_script$1 = __spreadProps(__spreadValues({}, PrivatePopperWrapper), {
   name: "VTooltip",
   vPopperTheme: "tooltip"
-};
+});
 var Tooltip_vue_vue_type_style_index_0_lang = "";
 let __vue2_render, __vue2_staticRenderFns;
 const __cssModules$1 = {};
-var __component__$1 = /* @__PURE__ */ normalizeComponent(
-  __vue2_script$1,
-  __vue2_render,
-  __vue2_staticRenderFns,
-  false,
-  __vue2_injectStyles$1,
-  null,
-  null,
-  null
-);
+var __component__$1 = /* @__PURE__ */ normalizeComponent(__vue2_script$1, __vue2_render, __vue2_staticRenderFns, false, __vue2_injectStyles$1, null, null, null);
 function __vue2_injectStyles$1(context) {
   for (let o in __cssModules$1) {
     this[o] = __cssModules$1[o];
@@ -1713,16 +1687,7 @@ var render = function() {
 };
 var staticRenderFns = [];
 const __cssModules = {};
-var __component__ = /* @__PURE__ */ normalizeComponent(
-  __vue2_script,
-  render,
-  staticRenderFns,
-  false,
-  __vue2_injectStyles,
-  null,
-  null,
-  null
-);
+var __component__ = /* @__PURE__ */ normalizeComponent(__vue2_script, render, staticRenderFns, false, __vue2_injectStyles, null, null, null);
 function __vue2_injectStyles(context) {
   for (let o in __cssModules) {
     this[o] = __cssModules[o];
@@ -1773,13 +1738,17 @@ function createTooltip(el, value, modifiers) {
       };
     },
     render(h) {
-      const {
+      const _a = this.options, {
         theme,
         html,
         content,
-        loadingContent,
-        ...otherOptions
-      } = this.options;
+        loadingContent
+      } = _a, otherOptions = __objRest(_a, [
+        "theme",
+        "html",
+        "content",
+        "loadingContent"
+      ]);
       return h(PrivateTooltipDirective, {
         props: {
           theme,

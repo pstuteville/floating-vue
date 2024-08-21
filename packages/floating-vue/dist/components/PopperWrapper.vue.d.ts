@@ -42,7 +42,7 @@ declare const _default: {
                 placement: {
                     type: StringConstructor;
                     default: (this: any) => any;
-                    validator: (value: any) => any;
+                    validator: (value: any) => boolean;
                 };
                 delay: {
                     type: (ObjectConstructor | StringConstructor | NumberConstructor)[];
@@ -90,7 +90,7 @@ declare const _default: {
                 };
                 strategy: {
                     type: StringConstructor;
-                    validator: (value: any) => any;
+                    validator: (value: any) => boolean;
                     default: (this: any) => any;
                 };
                 autoHide: {
@@ -202,7 +202,7 @@ declare const _default: {
                     };
                     transformOrigin: any;
                 };
-                shownChildren: any;
+                shownChildren: Set<unknown>;
                 lastAutoHide: boolean;
             };
             computed: {
@@ -317,7 +317,7 @@ declare const _default: {
         };
     };
     methods: {
-        getTargetNodes(): any;
+        getTargetNodes(): unknown[];
     };
 };
 export default _default;

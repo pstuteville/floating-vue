@@ -1,4 +1,4 @@
-export type FloatingVueConfig = any;
+export declare type FloatingVueConfig = any;
 export declare const config: FloatingVueConfig;
 /**
  * Get default config value depending on theme

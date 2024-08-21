@@ -1,1 +1,1 @@
-export declare function nextFrame(): any;
+export declare function nextFrame(): Promise<unknown>;
