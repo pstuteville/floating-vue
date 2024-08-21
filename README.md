@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./logo.png" alt="Floating Vue logo"/>
+<img src="./logo.png" alt="floating-vue logo"/>
 </p>
 
 <h1 align="center">Floating Vue</h1>
@@ -20,11 +20,7 @@ Easy tooltips, dropdowns, menus... with <a href="https://github.com/floating-ui/
 
 ## Sponsors
 
-<p align="center">
-  <a href="https://guillaume-chau.info/sponsors/" target="_blank">
-    <img src='https://akryum.netlify.app/sponsors.svg'/>
-  </a>
-</p>
+[![sponsors logos](https://guillaume-chau.info/sponsors.png)](https://guillaume-chau.info/sponsors)
 
 ---
 
