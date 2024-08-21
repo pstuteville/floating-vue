@@ -1927,7 +1927,7 @@ function install(app, options2 = {}) {
   app.component("VMenu", PrivateMenu);
 }
 const plugin = {
-  version: "1.0.0-beta.19",
+  version: "1.0.1-dev.1",
   install,
   options: config
 };
