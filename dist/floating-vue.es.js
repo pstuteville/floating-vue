@@ -520,7 +520,7 @@ var PrivatePopper = () => ({
       if (this.$_hideInProgress)
         return;
       if (this.shownChildren.size > 0) {
-        // this.$_pendingHide = true; // NB: override hiding
+        this.$_pendingHide = true;
         return;
       }
       if (!skipAiming && this.hasPopperShowTriggerHover && this.$_isAimingPopper()) {
@@ -540,10 +540,7 @@ var PrivatePopper = () => ({
         this.parentPopper.lockedChild = null;
       }
       this.$_pendingHide = false;
-      // NB: set timeout to call next render
-      setTimeout(() => {
-        this.$_scheduleHide(event, skipDelay)
-      }, 0);
+      this.$_scheduleHide(event, skipDelay);
       this.$emit("hide");
       this.$emit("update:shown", false);
     },
